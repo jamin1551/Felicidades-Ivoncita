@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Para Ivoncita 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  /* ===========================
+     Paleta y variables con amor
+  =========================== */
+  :root {
+    --sakura:   #f4a7b9;
+    --sakura-l: #fce4ec;
+    --rose:     #e8768d;
+    --peach:    #ffcba4;
+    --mint:     #b5e8d0;
+    --lavender: #d4b8f0;
+    --sky:      #b8d8f4;
+    --cream:    #fffaf5;
+    --soil:     #a07850;
+    --soil-d:   #7a5535;
+    --green-s:  #6aaa6a;
+    --green-d:  #4a8a4a;
+    --text:     #5a3a4a;
+    --text-l:   #9a6878;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; min-height: 100%;
+    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ===========================
+     Fondo con textura suave
+  =========================== */
+  body::before {
+    content:'';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse at 20% 10%, #fce4ec88 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, #e8f5e988 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 30%, #f3e5f588 0%, transparent 40%),
+      radial-gradient(ellipse at 10% 80%, #e3f2fd88 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* ===========================
+     Pétalos flotando de fondo
+  =========================== */
+  #petal-rain {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .bg-petal {
+    position: absolute; top: -30px;
+    opacity: 0;
+    animation: petalFall linear infinite;
+  }
+  @keyframes petalFall {
+    0%   { transform: translateY(0)      rotate(0deg)   translateX(0);    opacity: .7; }
+    25%  { transform: translateY(25vh)   rotate(90deg)  translateX(15px);              }
+    50%  { transform: translateY(50vh)   rotate(180deg) translateX(-10px);             }
+    75%  { transform: translateY(75vh)   rotate(270deg) translateX(10px);              }
+    100% { transform: translateY(108vh)  rotate(360deg) translateX(0);    opacity: 0;  }
+  }
+
+  /* ===========================
+     Layout principal
+  =========================== */
+  .wrapper {
+    position: relative; z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem 1.2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  /* ===========================
+     Encabezado
+  =========================== */
+  .header {
+    text-align: center;
+    animation: fadeDown .9s ease both;
+  }
+  .header .tagline {
+    font-size: clamp(.8rem, 2.5vw, .95rem);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-l);
+    margin-bottom: .5rem;
+  }
+  .header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: var(--rose);
+    line-height: 1.2;
+  }
+  .header h1 span { color: var(--sakura); font-style: italic; }
+  .header .sub {
+    margin-top: .6rem;
+    font-size: clamp(.85rem, 2.5vw, 1rem);
+    color: var(--text-l);
+    font-style: italic;
+  }
+
+  @keyframes fadeDown {
+    from { opacity:0; transform: translateY(-22px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* ===========================
+     Panel de instrucción
+  =========================== */
+  .instruction-box {
+    background: rgba(255,255,255,.65);
+    border: 1.5px solid #f4c2d0;
+    border-radius: 18px;
+    padding: .8rem 1.4rem;
+    text-align: center;
+    font-size: .95rem;
+    color: var(--text);
+    backdrop-filter: blur(6px);
+    animation: fadeDown .9s .2s ease both;
+    max-width: 420px;
+    width: 100%;
+    transition: all .4s;
+  }
+  .instruction-box strong { color: var(--rose); }
+
+  /* ===========================
+     El jardín
+  =========================== */
+  .garden-stage {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    /* cielo */
+    background: linear-gradient(180deg, #fce8f2 0%, #fdf6e8 65%, #e8d5b0 100%);
+    border-radius: 28px;
+    border: 2px solid #f0c8d8;
+    overflow: hidden;
+    height: clamp(340px, 55vw, 480px);
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(200,100,130,.12);
+    animation: fadeDown .9s .3s ease both;
+    user-select: none;
+  }
+
+  /* Sol */
+  .sun {
+    position: absolute;
+    top: 18px; right: 28px;
+    width: 52px; height: 52px;
+    background: #ffd966;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px #fff4aa55, 0 0 0 16px #ffd96622;
+    animation: sunPulse 3s ease-in-out infinite;
+  }
+  @keyframes sunPulse {
+    0%,100% { box-shadow: 0 0 0 8px #fff4aa55, 0 0 0 16px #ffd96622; }
+    50%      { box-shadow: 0 0 0 14px #fff4aa44, 0 0 0 26px #ffd96618; }
+  }
+
+  /* Nubes decorativas */
+  .cloud {
+    position: absolute;
+    background: rgba(255,255,255,.7);
+    border-radius: 50px;
+    animation: cloudDrift linear infinite;
+  }
+  .cloud::before, .cloud::after {
+    content:''; position:absolute;
+    background: inherit; border-radius: 50%;
+  }
+  @keyframes cloudDrift {
+    from { transform: translateX(-120%); }
+    to   { transform: translateX(800px); }
+  }
+
+  /* Suelo */
+  .ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 28%;
+    background: linear-gradient(180deg, #c8a06a 0%, #a07040 100%);
+    border-radius: 0 0 26px 26px;
+  }
+  .ground::before {
+    content:'';
+    position: absolute; top: -6px; left: 0; right: 0; height: 12px;
+    background: #d4b07a;
+    border-radius: 50%;
+  }
+  /* Pasto */
+  .grass {
+    position: absolute;
+    bottom: 27%; left: 0; right: 0;
+    height: 14px;
+    overflow: hidden;
+  }
+  .grass-blade {
+    position: absolute;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #7acc7a 0%, #4a9a4a 100%);
+    border-radius: 4px 4px 0 0;
+    transform-origin: bottom center;
+    animation: sway 2s ease-in-out infinite alternate;
+  }
+  @keyframes sway {
+    from { transform: rotate(-5deg); }
+    to   { transform: rotate(5deg); }
+  }
+
+  /* ===========================
+     Semilla + tiesto principal
+  =========================== */
+  .main-pot-wrap {
+    position: absolute;
+    bottom: 27%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* La planta principal crece aquí */
+  .main-plant {
+    position: relative;
+    width: 110px;
+    height: 0;
+    overflow: visible;
+    transition: height .6s ease;
+  }
+
+  /* ===========================
+     Plantas de cualidades
+  =========================== */
+  .quality-plant {
+    position: absolute;
+    bottom: 27%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: scaleY(0) translateX(-50%);
+    transform-origin: bottom center;
+    transition: opacity .6s ease, transform .7s cubic-bezier(.34,1.56,.64,1);
+  }
+  .quality-plant.visible {
+    opacity: 1;
+    transform: scaleY(1) translateX(-50%);
+  }
+  .quality-label {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: rgba(255,255,255,.88);
+    border: 1.5px solid;
+    border-radius: 30px;
+    padding: 3px 12px;
+    font-size: clamp(.62rem, 1.8vw, .78rem);
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    transition: opacity .4s .3s, transform .4s .3s;
+    transform: translateX(-50%) translateY(-6px) scale(.85);
+  }
+  .quality-plant.visible .quality-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-6px) scale(1);
+  }
+
+  /* ===========================
+     Progreso de riego
+  =========================== */
+  .water-ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+    animation: fadeDown .9s .4s ease both;
+  }
+  .water-drops-row {
+    display: flex; gap: 8px;
+  }
+  .drop {
+    width: 22px; height: 28px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: #cde8f8;
+    border: 2px solid #88c8e8;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .drop.filled {
+    background: linear-gradient(180deg, #7ec8e8 0%, #4aa8d8 100%);
+    border-color: #3898c8;
+    animation: dropFill .4s ease;
+  }
+  @keyframes dropFill {
+    0%   { transform: scale(1.4); }
+    100% { transform: scale(1); }
+  }
+  .water-label {
+    font-size: .82rem;
+    color: var(--text-l);
+    font-style: italic;
+  }
+
+  /* ===========================
+     Tarjeta mensaje secreto
+  =========================== */
+  .message-card {
+    max-width: 520px; width: 100%;
+    background: rgba(255,255,255,.88);
+    border: 2px solid #f4b8cc;
+    border-radius: 28px;
+    padding: 2.2rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 40px rgba(200,100,130,.13);
+    opacity: 0;
+    transform: translateY(28px) scale(.96);
+    transition: all .8s cubic-bezier(.34,1.4,.64,1);
+    pointer-events: none;
+  }
+  .message-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .message-card .cherry-deco {
+    font-size: 1.6rem;
+    letter-spacing: .25em;
+    display: block;
+    margin-bottom: .8rem;
+  }
+  .message-card h2 {
+    font-family: 'Lora', serif;
+    color: var(--rose);
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    margin-bottom: 1.2rem;
+  }
+  .message-card .msg-text {
+    font-size: clamp(.88rem, 2.5vw, 1.02rem);
+    color: var(--text);
+    line-height: 1.9;
+    font-style: italic;
+  }
+  .message-card .divider-floral {
+    margin: 1.2rem auto;
+    width: 100px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #f4b8cc, transparent);
+  }
+  .message-card .signature {
+    font-size: .9rem;
+    color: var(--text-l);
+    font-weight: 600;
+  }
+  .message-card .signature em {
+    font-style: italic; font-weight: 400;
+  }
+
+  /* ===========================
+     Confetti
+  =========================== */
+  .confetti-piece {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    border-radius: 2px;
+    animation: cFall linear forwards;
+  }
+  @keyframes cFall {
+    0%   { transform: translateY(0) rotate(0deg);    opacity: 1;  }
+    100% { transform: translateY(105vh) rotate(540deg); opacity: 0; }
+  }
+
+  /* ===========================
+     Ripple al hacer clic
+  =========================== */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,.5);
+    pointer-events: none;
+    animation: rippleOut .5s ease-out forwards;
+    transform: scale(0);
+  }
+  @keyframes rippleOut {
+    to { transform: scale(4); opacity: 0; }
+  }
+
+  /* ===========================
+     Toast de cualidad
+  =========================== */
+  .toast {
+    position: fixed;
+    top: 18px; left: 50%;
+    transform: translateX(-50%) translateY(-80px);
+    background: rgba(255,255,255,.95);
+    border: 2px solid;
+    border-radius: 40px;
+    padding: .5rem 1.4rem;
+    font-size: .95rem;
+    font-weight: 700;
+    z-index: 900;
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ===========================
+     Botón de reiniciar
+  =========================== */
+  .restart-btn {
+    margin-top: .5rem;
+    background: none;
+    border: 1.5px solid #f4b8cc;
+    border-radius: 40px;
+    padding: .45rem 1.4rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: .85rem;
+    color: var(--text-l);
+    cursor: pointer;
+    transition: all .25s;
+    display: none;
+  }
+  .restart-btn:hover { background: #fce4ec; color: var(--rose); }
+  .restart-btn.show { display: inline-block; }
+
+  /* ===========================
+     Responsive
+  =========================== */
+  @media (max-width: 480px) {
+    .wrapper { padding: 1.5rem .8rem 4rem; gap: 1.4rem; }
+    .garden-stage { border-radius: 20px; }
+    .message-card { padding: 1.6rem 1.2rem; border-radius: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Lluvia de pétalos de fondo -->
+<div id="petal-rain"></div>
+
+<!-- Toast de cualidad -->
+<div class="toast" id="toast"></div>
+
+<div class="wrapper">
+
+  <!-- ENCABEZADO -->
+  <div class="header">
+    <p class="tagline">✦ Un jardín especial ✦</p>
+    <h1>Para <span>Ivoncita</span> 🌸</h1>
+    <p class="sub">Cada clic hace florecer algo tuyo...</p>
+  </div>
+
+  <!-- INSTRUCCIÓN -->
+  <div class="instruction-box" id="instrBox">
+    <strong>🌱 Toca el jardín para regar la semilla</strong><br>
+    <span id="instrText">¡Riégala 5 veces y mira la magia! 💧</span>
+  </div>
+
+  <!-- EL JARDÍN -->
+  <div class="garden-stage" id="garden">
+
+    <!-- Sol -->
+    <div class="sun"></div>
+
+    <!-- Nubes -->
+    <div class="cloud" style="width:80px;height:26px;top:28px;left:-90px;animation-duration:28s;animation-delay:0s;">
+      <span style="display:none"></span>
+    </div>
+    <div class="cloud" style="width:60px;height:20px;top:50px;left:-70px;animation-duration:38s;animation-delay:10s;opacity:.6">
+    </div>
+
+    <!-- Pasto -->
+    <div class="grass" id="grass"></div>
+
+    <!-- Suelo -->
+    <div class="ground"></div>
+
+    <!-- Plantas de cualidades (se posicionan por JS) -->
+    <!-- Se generan dinámicamente -->
+
+    <!-- Planta principal (sakura) -->
+    <div class="main-pot-wrap" id="mainPotWrap">
+      <svg id="mainPlantSvg" width="120" height="0" viewBox="0 0 120 220" style="overflow:visible; transition: height .6s ease;">
+        <!-- Tallo -->
+        <line id="mainStem" x1="60" y1="220" x2="60" y2="60"
+              stroke="#6aaa6a" stroke-width="5" stroke-linecap="round"
+              style="transform-origin:60px 220px; transform:scaleY(0); transition:transform .8s ease;"/>
+        <!-- Rama izq -->
+        <path id="branchL" d="M58 140 Q35 120 18 105"
+              stroke="#6aaa6a" stroke-width="3.5" fill="none" stroke-linecap="round"
+              stroke-dasharray="60" stroke-dashoffset="60"
+              style="transition: stroke-dashoffset .6s .4s ease;"/>
+        <!-- Rama der -->
+        <path id="branchR" d="M62 160 Q85 140 102 125"
+              stroke="#6aaa6a" stroke-width="3.5" fill="none" stroke-linecap="round"
+              stroke-dasharray="60" stroke-dashoffset="60"
+              style="transition: stroke-dashoffset .6s .6s ease;"/>
+        <!-- Flor central -->
+        <g id="flowerC" style="transform-origin:60px 60px;transform:scale(0);transition:transform .7s .2s cubic-bezier(.34,1.56,.64,1);">
+          <ellipse cx="60" cy="42" rx="9" ry="13" fill="#f9a8c0" transform="rotate(0 60 60)"/>
+          <ellipse cx="60" cy="42" rx="9" ry="13" fill="#fbbfd0" transform="rotate(72 60 60)"/>
+          <ellipse cx="60" cy="42" rx="9" ry="13" fill="#f9a8c0" transform="rotate(144 60 60)"/>
+          <ellipse cx="60" cy="42" rx="9" ry="13" fill="#fbbfd0" transform="rotate(216 60 60)"/>
+          <ellipse cx="60" cy="42" rx="9" ry="13" fill="#f9c8d8" transform="rotate(288 60 60)"/>
+          <circle cx="60" cy="60" r="8" fill="#ffd966"/>
+        </g>
+        <!-- Flor izq -->
+        <g id="flowerL" style="transform-origin:18px 105px;transform:scale(0);transition:transform .7s .7s cubic-bezier(.34,1.56,.64,1);">
+          <ellipse cx="18" cy="91" rx="7" ry="10" fill="#f9a8c0" transform="rotate(0 18 105)"/>
+          <ellipse cx="18" cy="91" rx="7" ry="10" fill="#fbbfd0" transform="rotate(72 18 105)"/>
+          <ellipse cx="18" cy="91" rx="7" ry="10" fill="#f9a8c0" transform="rotate(144 18 105)"/>
+          <ellipse cx="18" cy="91" rx="7" ry="10" fill="#fbbfd0" transform="rotate(216 18 105)"/>
+          <ellipse cx="18" cy="91" rx="7" ry="10" fill="#f9c8d8" transform="rotate(288 18 105)"/>
+          <circle cx="18" cy="105" r="6" fill="#ffd966"/>
+        </g>
+        <!-- Flor der -->
+        <g id="flowerR" style="transform-origin:102px 125px;transform:scale(0);transition:transform .7s .9s cubic-bezier(.34,1.56,.64,1);">
+          <ellipse cx="102" cy="111" rx="7" ry="10" fill="#fbbfd0" transform="rotate(0 102 125)"/>
+          <ellipse cx="102" cy="111" rx="7" ry="10" fill="#f9a8c0" transform="rotate(72 102 125)"/>
+          <ellipse cx="102" cy="111" rx="7" ry="10" fill="#fbbfd0" transform="rotate(144 102 125)"/>
+          <ellipse cx="102" cy="111" rx="7" ry="10" fill="#f9a8c0" transform="rotate(216 102 125)"/>
+          <ellipse cx="102" cy="111" rx="7" ry="10" fill="#f9c8d8" transform="rotate(288 102 125)"/>
+          <circle cx="102" cy="125" r="6" fill="#ffd966"/>
+        </g>
+        <!-- Semilla -->
+        <ellipse id="seedEgg" cx="60" cy="217" rx="7" ry="5" fill="#8b6347"/>
+      </svg>
+    </div>
+
+  </div><!-- /garden-stage -->
+
+  <!-- GOTITAS DE PROGRESO -->
+  <div class="water-ui">
+    <div class="water-drops-row" id="dropsRow"></div>
+    <p class="water-label" id="waterLabel">0 / 5 riegos 💧</p>
+    <button class="restart-btn" id="restartBtn" onclick="restartGarden()">🔄 Volver a empezar</button>
+  </div>
+
+  <!-- MENSAJE SECRETO -->
+  <div class="message-card" id="msgCard">
+    <span class="cherry-deco">🌸 🌸 🌸</span>
+    <h2>¡Felicidades, mi amor! 🎉</h2>
+    <p class="msg-text">
+      "¡Felicidades por tu nuevo trabajo mi amor!<br><br>
+      Me siento orgulloso, alegre y feliz porque te adentres a una nueva etapa.<br><br>
+      Confío en que será mucho mejor donde vamos.<br>
+      Sos lo mejor y te mereces lo mejor."
+    </p>
+    <div class="divider-floral"></div>
+    <p class="signature">Con todo mi amor,<br><em>Jamín "tu novio" Chicas 🌷</em></p>
+  </div>
+
+</div><!-- /wrapper -->
+
+<script>
+/* =============================================
+   ¡Aquí empieza la magia! 🌸
+   Este jardín fue hecho con amor para Ivoncita.
+============================================= */
+
+// Cualidades de Ivoncita — cada una tiene su propia flor y color
+const QUALITIES = [
+  { name:'Amable',       emoji:'🌷', color:'#f9a8c0', border:'#e07898', flowerType:'tulip',   label:'Amable'       },
+  { name:'Inteligente',  emoji:'🌻', color:'#ffd966', border:'#c8a030', flowerType:'sunflower',label:'Inteligente'  },
+  { name:'Guapa',        emoji:'🌹', color:'#e8768d', border:'#b84060', flowerType:'rose',     label:'Guapa'        },
+  { name:'Proactiva',    emoji:'🌼', color:'#fff0a0', border:'#c8b030', flowerType:'daisy',    label:'Proactiva'    },
+  { name:'Responsable',  emoji:'🌿', color:'#b5e8d0', border:'#4a9a7a', flowerType:'leaf',     label:'Responsable'  },
+  { name:'Empática',     emoji:'💜', color:'#d4b8f0', border:'#8858c0', flowerType:'lavender', label:'Empática'     },
+  { name:'Organizada',   emoji:'🌸', color:'#f9c8d8', border:'#d07898', flowerType:'sakura',   label:'Organizada'   },
+  { name:'Respetuosa',   emoji:'🍃', color:'#c8e8b0', border:'#5a9848', flowerType:'clover',   label:'Respetuosa'   },
+  { name:'Dinámica',     emoji:'🌺', color:'#ffb8a0', border:'#d85030', flowerType:'hibiscus', label:'Dinámica'     },
+  { name:'Perspicaz',    emoji:'⭐', color:'#b8d8f4', border:'#3878c0', flowerType:'star',     label:'Perspicaz'    },
+];
+
+const MAX_WATER = 5;
+let waterCount = 0;
+let qualityIndex = 0;
+let bloomed = false;
+let plantedQualities = 0;
+
+// AudioContext para sonidos
+let audioCtx = null;
+function getAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+/* Genera un sonido de campanita / pop suave */
+function playSound(type) {
+  try {
+    const ctx = getAudio();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    if (type === 'water') {
+      // Bloop de agua
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(660, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(330, ctx.currentTime + .18);
+      gain.gain.setValueAtTime(.18, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + .22);
+      osc.start(); osc.stop(ctx.currentTime + .22);
+    } else if (type === 'bloom') {
+      // Acorde de campanita al florecer
+      [523, 659, 784, 1046].forEach((freq, i) => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.type = 'sine';
+        o.frequency.value = freq;
+        g.gain.setValueAtTime(0, ctx.currentTime + i*.08);
+        g.gain.linearRampToValueAtTime(.12, ctx.currentTime + i*.08 + .05);
+        g.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + i*.08 + .6);
+        o.start(ctx.currentTime + i*.08);
+        o.stop(ctx.currentTime + i*.08 + .65);
+      });
+    } else if (type === 'quality') {
+      // Campanita suave para cada cualidad
+      const freqs = [784, 880, 1046, 880];
+      freqs.forEach((freq, i) => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.type = 'triangle';
+        o.frequency.value = freq;
+        g.gain.setValueAtTime(0, ctx.currentTime + i*.07);
+        g.gain.linearRampToValueAtTime(.1, ctx.currentTime + i*.07 + .04);
+        g.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + i*.07 + .35);
+        o.start(ctx.currentTime + i*.07);
+        o.stop(ctx.currentTime + i*.07 + .38);
+      });
+    } else if (type === 'celebration') {
+      // Fanfarria final
+      const melody = [523,587,659,698,784,880,988,1046];
+      melody.forEach((freq, i) => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.type = 'sine';
+        o.frequency.value = freq;
+        g.gain.setValueAtTime(0, ctx.currentTime + i*.09);
+        g.gain.linearRampToValueAtTime(.13, ctx.currentTime + i*.09 + .04);
+        g.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + i*.09 + .5);
+        o.start(ctx.currentTime + i*.09);
+        o.stop(ctx.currentTime + i*.09 + .55);
+      });
+    }
+  } catch(e) { /* silencio si no hay soporte */ }
+}
+
+/* =====================
+   Inicializar jardín
+===================== */
+window.addEventListener('DOMContentLoaded', () => {
+  buildGrass();
+  buildDrops();
+  buildPetalRain(6);
+  positionQualityPlants();
+});
+
+/* Pasto decorativo */
+function buildGrass() {
+  const grass = document.getElementById('grass');
+  const stage = document.querySelector('.garden-stage');
+  const w = stage.offsetWidth || 640;
+  for (let i = 0; i < 55; i++) {
+    const b = document.createElement('div');
+    b.className = 'grass-blade';
+    b.style.left = (i / 55 * 100) + '%';
+    b.style.height = (8 + Math.random() * 10) + 'px';
+    b.style.animationDelay = (Math.random() * 2) + 's';
+    b.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
+    grass.appendChild(b);
+  }
+}
+
+/* Gotitas de progreso */
+function buildDrops() {
+  const row = document.getElementById('dropsRow');
+  for (let i = 0; i < MAX_WATER; i++) {
+    const d = document.createElement('div');
+    d.className = 'drop';
+    d.id = 'drop' + i;
+    row.appendChild(d);
+  }
+}
+
+/* Pétalos de fondo */
+function buildPetalRain(count) {
+  const container = document.getElementById('petal-rain');
+  const colors = ['#f9a8c0','#fbbfd0','#f9c8d8','#ffd6e8','#fce4ec'];
+  for (let i = 0; i < count; i++) {
+    const span = document.createElement('span');
+    span.className = 'bg-petal';
+    span.style.left = Math.random() * 100 + '%';
+    span.style.animationDuration = (9 + Math.random() * 9) + 's';
+    span.style.animationDelay = (Math.random() * 10) + 's';
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    span.innerHTML = `<svg width="14" height="14" viewBox="0 0 20 20"><ellipse cx="10" cy="5" rx="5" ry="8" fill="${c}" transform="rotate(${Math.random()*360} 10 10)" opacity=".7"/></svg>`;
+    container.appendChild(span);
+  }
+}
+
+/* Posicionar las plantas de cualidades en el jardín */
+function positionQualityPlants() {
+  const garden = document.getElementById('garden');
+  const gw = garden.offsetWidth || 640;
+
+  // Distribuir a izquierda y derecha de la planta central
+  const positions = [
+    { pct: 12 }, { pct: 22 }, { pct: 34 }, { pct: 68 }, { pct: 78 },
+    { pct: 88 }, { pct: 6  }, { pct: 42 }, { pct: 58 }, { pct: 94 },
+  ];
+
+  QUALITIES.forEach((q, i) => {
+    const plant = document.createElement('div');
+    plant.className = 'quality-plant';
+    plant.id = 'qplant' + i;
+    plant.style.left = positions[i].pct + '%';
+
+    // SVG de la plantita según tipo
+    const svg = buildQualitySVG(q);
+    plant.innerHTML = svg;
+
+    // Etiqueta con el nombre de la cualidad
+    const lbl = document.createElement('div');
+    lbl.className = 'quality-label';
+    lbl.style.borderColor = q.border;
+    lbl.style.color = q.border;
+    lbl.textContent = q.emoji + ' ' + q.label;
+    plant.appendChild(lbl);
+
+    garden.appendChild(plant);
+  });
+}
+
+/* Construye el SVG de cada tipo de flor/planta */
+function buildQualitySVG(q) {
+  const c = q.color;
+  const b = q.border;
+  const s = 52; // height base
+
+  const flowers = {
+    tulip: `<svg width="44" height="${s}" viewBox="0 0 44 ${s}" style="overflow:visible;">
+      <line x1="22" y1="${s}" x2="22" y2="20" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M22 20 Q10 14 10 4 Q16 0 22 6 Q28 0 34 4 Q34 14 22 20Z" fill="${c}" stroke="${b}" stroke-width="1.2"/>
+      <path d="M22 20 Q18 14 18 8" stroke="${b}" stroke-width=".8" fill="none" opacity=".5"/>
+    </svg>`,
+
+    sunflower: `<svg width="52" height="${s}" viewBox="0 0 52 ${s}" style="overflow:visible;">
+      <line x1="26" y1="${s}" x2="26" y2="18" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      ${[0,40,80,120,160,200,240,280,320].map(a=>`<ellipse cx="26" cy="8" rx="5" ry="9" fill="${c}" transform="rotate(${a} 26 18)" opacity=".9"/>`).join('')}
+      <circle cx="26" cy="18" r="9" fill="${b}"/>
+      <circle cx="26" cy="18" r="5" fill="#5a3010" opacity=".7"/>
+    </svg>`,
+
+    rose: `<svg width="44" height="${s}" viewBox="0 0 44 ${s}" style="overflow:visible;">
+      <line x1="22" y1="${s}" x2="22" y2="18" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      <ellipse cx="22" cy="18" rx="11" ry="10" fill="${c}"/>
+      <ellipse cx="22" cy="15" rx="8" ry="7" fill="${c}" stroke="${b}" stroke-width="1"/>
+      <ellipse cx="22" cy="13" rx="5" ry="5" fill="${b}" opacity=".5"/>
+      <ellipse cx="22" cy="12" rx="3" ry="3" fill="${c}"/>
+    </svg>`,
+
+    daisy: `<svg width="48" height="${s}" viewBox="0 0 48 ${s}" style="overflow:visible;">
+      <line x1="24" y1="${s}" x2="24" y2="20" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      ${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cx="24" cy="10" rx="4" ry="9" fill="${c}" transform="rotate(${a} 24 20)"/>`).join('')}
+      <circle cx="24" cy="20" r="7" fill="#ffd966"/>
+    </svg>`,
+
+    leaf: `<svg width="40" height="${s}" viewBox="0 0 40 ${s}" style="overflow:visible;">
+      <line x1="20" y1="${s}" x2="20" y2="16" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M20 16 Q4 14 6 2 Q14 0 20 16Z" fill="${c}" stroke="${b}" stroke-width="1"/>
+      <path d="M20 16 Q36 14 34 2 Q26 0 20 16Z" fill="${c}" stroke="${b}" stroke-width="1" opacity=".85"/>
+      <line x1="20" y1="16" x2="20" y2="2" stroke="${b}" stroke-width=".8" opacity=".5"/>
+    </svg>`,
+
+    lavender: `<svg width="36" height="${s+8}" viewBox="0 0 36 ${s+8}" style="overflow:visible;">
+      <line x1="18" y1="${s+8}" x2="18" y2="10" stroke="#6aaa6a" stroke-width="3" stroke-linecap="round"/>
+      ${[0,1,2,3,4].map(i=>`
+        <ellipse cx="${14+i%2*8}" cy="${10+i*9}" rx="5" ry="7" fill="${c}" stroke="${b}" stroke-width=".8" opacity="${.9-i*.05}"/>
+      `).join('')}
+    </svg>`,
+
+    sakura: `<svg width="52" height="${s}" viewBox="0 0 52 ${s}" style="overflow:visible;">
+      <line x1="26" y1="${s}" x2="26" y2="20" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      ${[0,72,144,216,288].map(a=>`<ellipse cx="26" cy="10" rx="7" ry="11" fill="${c}" stroke="${b}" stroke-width=".8" transform="rotate(${a} 26 20)"/>`).join('')}
+      <circle cx="26" cy="20" r="5" fill="#ffd966"/>
+    </svg>`,
+
+    clover: `<svg width="44" height="${s}" viewBox="0 0 44 ${s}" style="overflow:visible;">
+      <line x1="22" y1="${s}" x2="22" y2="28" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="22" cy="18" r="9" fill="${c}" stroke="${b}" stroke-width="1"/>
+      <circle cx="13" cy="26" r="9" fill="${c}" stroke="${b}" stroke-width="1"/>
+      <circle cx="31" cy="26" r="9" fill="${c}" stroke="${b}" stroke-width="1"/>
+    </svg>`,
+
+    hibiscus: `<svg width="52" height="${s}" viewBox="0 0 52 ${s}" style="overflow:visible;">
+      <line x1="26" y1="${s}" x2="26" y2="22" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      ${[0,72,144,216,288].map(a=>`<ellipse cx="26" cy="10" rx="8" ry="13" fill="${c}" stroke="${b}" stroke-width=".8" transform="rotate(${a} 26 22)" opacity=".9"/>`).join('')}
+      <circle cx="26" cy="22" r="6" fill="${b}"/>
+      <line x1="26" y1="16" x2="26" y2="8" stroke="#ffd966" stroke-width="2" stroke-linecap="round"/>
+    </svg>`,
+
+    star: `<svg width="48" height="${s}" viewBox="0 0 48 ${s}" style="overflow:visible;">
+      <line x1="24" y1="${s}" x2="24" y2="20" stroke="#6aaa6a" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="24,6 27,16 38,16 29,23 32,34 24,27 16,34 19,23 10,16 21,16" fill="${c}" stroke="${b}" stroke-width="1"/>
+    </svg>`,
+  };
+
+  return flowers[q.flowerType] || flowers.sakura;
+}
+
+/* =====================
+   Regar el jardín
+===================== */
+document.getElementById('garden').addEventListener('click', function(e) {
+  if (bloomed && plantedQualities >= QUALITIES.length) return;
+
+  // Ripple visual
+  addRipple(e, this);
+
+  if (!bloomed) {
+    waterCount++;
+    updateDrops();
+    playSound('water');
+    growMainPlant();
+
+    const messages = [
+      '¡La semillita sintió el amor! 💧',
+      '¡Ya está brotando! Sigue... 🌱',
+      '¡Mira cómo crece! Un poco más... 🌿',
+      '¡Ya casi florece! Un riego más 🌸',
+      '¡Último riego con todo el amor! 💕',
+    ];
+    document.getElementById('instrText').textContent = messages[waterCount - 1] || '';
+
+    if (waterCount >= MAX_WATER) {
+      setTimeout(() => {
+        bloomMainPlant();
+        bloomed = true;
+      }, 400);
+    }
+  } else {
+    // Ya floreció — plantar cualidades
+    if (qualityIndex < QUALITIES.length) {
+      plantQuality(qualityIndex);
+      qualityIndex++;
+    }
+    if (qualityIndex >= QUALITIES.length) {
+      setTimeout(showCelebration, 600);
+    }
+  }
+});
+
+/* Ripple al hacer clic */
+function addRipple(e, container) {
+  const rect = container.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const r = document.createElement('div');
+  r.className = 'ripple';
+  r.style.width = r.style.height = '60px';
+  r.style.left = (x - 30) + 'px';
+  r.style.top  = (y - 30) + 'px';
+  container.appendChild(r);
+  setTimeout(() => r.remove(), 600);
+}
+
+/* Actualizar gotitas de progreso */
+function updateDrops() {
+  for (let i = 0; i < waterCount && i < MAX_WATER; i++) {
+    document.getElementById('drop' + i)?.classList.add('filled');
+  }
+  document.getElementById('waterLabel').textContent = waterCount + ' / ' + MAX_WATER + ' riegos 💧';
+}
+
+/* Crecimiento progresivo de la planta principal */
+function growMainPlant() {
+  const svg = document.getElementById('mainPlantSvg');
+  const pct = waterCount / MAX_WATER;
+  const h = Math.round(220 * pct);
+  svg.style.height = h + 'px';
+
+  document.getElementById('mainStem').style.transform = 'scaleY(' + pct + ')';
+  if (waterCount >= 3) {
+    document.getElementById('branchL').style.strokeDashoffset = '0';
+    document.getElementById('branchR').style.strokeDashoffset = '0';
+  }
+}
+
+/* Florecimiento total */
+function bloomMainPlant() {
+  document.getElementById('mainPlantSvg').style.height = '220px';
+  document.getElementById('mainStem').style.transform = 'scaleY(1)';
+  document.getElementById('branchL').style.strokeDashoffset = '0';
+  document.getElementById('branchR').style.strokeDashoffset = '0';
+  document.getElementById('flowerC').style.transform = 'scale(1)';
+  document.getElementById('flowerL').style.transform = 'scale(1)';
+  document.getElementById('flowerR').style.transform = 'scale(1)';
+  document.getElementById('seedEgg').style.display = 'none';
+  playSound('bloom');
+  buildPetalRain(12);
+
+  const box = document.getElementById('instrBox');
+  box.style.borderColor = '#c0e8d0';
+  document.querySelector('#instrBox strong').textContent = '🌸 ¡La flor de cerezo brotó!';
+  document.getElementById('instrText').textContent = 'Sigue tocando el jardín para descubrir las cualidades de Ivoncita ✨';
+}
+
+/* Plantar una cualidad */
+function plantQuality(idx) {
+  const plant = document.getElementById('qplant' + idx);
+  if (!plant) return;
+  plant.classList.add('visible');
+  plantedQualities++;
+  playSound('quality');
+  showToast(QUALITIES[idx]);
+
+  document.getElementById('instrText').textContent =
+    (QUALITIES.length - idx - 1) > 0
+      ? `¡${QUALITIES[idx].name}! Sigue tocando... (${idx + 1}/${QUALITIES.length}) 🌿`
+      : '¡El jardín está completo! 🎉';
+}
+
+/* Toast con nombre de la cualidad */
+function showToast(q) {
+  const toast = document.getElementById('toast');
+  toast.textContent = q.emoji + ' ¡' + q.name + '!';
+  toast.style.borderColor = q.border;
+  toast.style.color = q.border;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+/* Celebración final */
+function showCelebration() {
+  document.getElementById('msgCard').classList.add('show');
+  playSound('celebration');
+  launchConfetti();
+  buildPetalRain(20);
+  document.getElementById('restartBtn').classList.add('show');
+  document.getElementById('waterLabel').textContent = '🌸 ¡Jardín completo! 🌸';
+  const box = document.getElementById('instrBox');
+  box.style.borderColor = '#f4b8cc';
+  document.querySelector('#instrBox strong').textContent = '🎉 ¡El jardín de Ivoncita está completo!';
+  document.getElementById('instrText').textContent = 'Un jardín tan hermoso como ella 🌸';
+}
+
+/* Confetti de celebración */
+function launchConfetti() {
+  const colors = ['#f9a8c0','#ffd966','#b8d8f4','#c8f9a8','#f9c8d8','#e8c4f8','#ffb8a0'];
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.top = '-12px';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.width  = (5 + Math.random() * 8) + 'px';
+      p.style.height = p.style.width;
+      p.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+      p.style.animationDuration = (2 + Math.random() * 2) + 's';
+      p.style.animationDelay = (Math.random() * .5) + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 4500);
+    }, i * 25);
+  }
+}
+
+/* Reiniciar el jardín */
+function restartGarden() {
+  waterCount = 0; qualityIndex = 0; bloomed = false; plantedQualities = 0;
+
+  // Restablecer planta principal
+  document.getElementById('mainPlantSvg').style.height = '0px';
+  document.getElementById('mainStem').style.transform = 'scaleY(0)';
+  document.getElementById('branchL').style.strokeDashoffset = '60';
+  document.getElementById('branchR').style.strokeDashoffset = '60';
+  document.getElementById('flowerC').style.transform = 'scale(0)';
+  document.getElementById('flowerL').style.transform = 'scale(0)';
+  document.getElementById('flowerR').style.transform = 'scale(0)';
+  document.getElementById('seedEgg').style.display = '';
+
+  // Quitar cualidades
+  QUALITIES.forEach((_, i) => document.getElementById('qplant' + i)?.classList.remove('visible'));
+
+  // Restablecer gotas
+  for (let i = 0; i < MAX_WATER; i++) document.getElementById('drop' + i)?.classList.remove('filled');
+  document.getElementById('waterLabel').textContent = '0 / 5 riegos 💧';
+
+  // Restablecer instrucción
+  const box = document.getElementById('instrBox');
+  box.style.borderColor = '#f4c2d0';
+  document.querySelector('#instrBox strong').textContent = '🌱 Toca el jardín para regar la semilla';
+  document.getElementById('instrText').textContent = '¡Riégala 5 veces y mira la magia! 💧';
+
+  // Ocultar mensaje y botón
+  document.getElementById('msgCard').classList.remove('show');
+  document.getElementById('restartBtn').classList.remove('show');
+}
+</script>
+</body>
+</html>
